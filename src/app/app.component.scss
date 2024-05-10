@@ -1,0 +1,42 @@
+/* Reset some default styling */
+.gjs-cv-canvas {
+  @apply w-full h-full top-0 flex-1 bg-[#f5f5f5];
+}
+
+.gjs-one-bg {
+  @apply bg-white;
+}
+
+.gjs-two-color {
+  @apply text-slate-900;
+}
+
+.gjs-four-color-h:hover {
+  @apply text-[var(--primary-color)];
+}
+
+.gjs-block {
+  @apply border border-dashed mx-3 rounded-[var(--border-radius-base)];
+}
+
+.gjs-block-category .gjs-title {
+  @apply font-normal bg-white border-b border-[#e5e7eb];
+}
+
+.gjs-block-category.gjs-open .gjs-title {
+  @apply font-semibold;
+}
+
+.gjs-category-open,
+.gjs-block-category.gjs-open,
+.gjs-sm-sector.gjs-sm-open,
+.gjs-trait-category.gjs-open {
+  @apply border-b border-[#e5e7eb];
+}
+
+.ant-tabs-top > .ant-tabs-nav,
+.ant-tabs-bottom > .ant-tabs-nav,
+.ant-tabs-top > div > .ant-tabs-nav,
+.ant-tabs-bottom > div > .ant-tabs-nav {
+  @apply mb-0;
+}

@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/ng-zorro-antd/ng-zorro-antd.less";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@primary-color: #F4801A;
+@border-radius-base: 6px;
+
+:root {
+  --primary-color: #F4801A;
+  --border-radius-base: 6px;
+
+  // variables layout builder tools
+  --panel-height: 4rem;
+  --left-side-width: 15rem;
+  --right-side-width: 20rem;
+}
+
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: var(--border-radius-base);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: var(--border-radius-base);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
