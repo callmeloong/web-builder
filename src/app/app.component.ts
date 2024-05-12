@@ -11,10 +11,10 @@ import { NzTooltipDirective } from 'ng-zorro-antd/tooltip';
 import { CommonModule } from '@angular/common';
 import { NzSwitchComponent } from 'ng-zorro-antd/switch';
 import { FormsModule } from '@angular/forms';
-
-import 'grapesjs-plugin-forms';
-import 'grapesjs-tailwind';
-
+declare const require: any;
+const GjsTailwind = require('../../node_modules/grapesjs-tailwind/dist/grapesjs-tailwind.min.js');
+import GjsPluginForms from 'grapesjs-plugin-forms';
+// declare var GjsTailwind: any;
 declare var grapesjs: any;
 @Component({
   selector: 'bgs-root',
@@ -69,63 +69,41 @@ export class AppComponent {
       width: 'auto',
       storageManager: false,
       panels: {
-        defaults: [
-          {
-            id: 'panel-switcher',
-            el: '.panel-switcher',
-            buttons: [
-              {
-                id: 'show-layers',
-                active: true,
-                label: 'Layers',
-                command: 'show-layers',
-                // Once activated disable the possibility to turn it off
-                togglable: false,
-              },
-              {
-                id: 'show-style',
-                active: true,
-                label: 'Styles',
-                command: 'show-styles',
-                togglable: false,
-              },
-            ],
-          },
-        ],
+        defaults: [],
       },
       blockManager: {
         appendTo: '#blocks',
-        blocks: [
-          {
-            category: { id: 'header', label: 'Header', open: true, order: 1 },
-            id: 'section', // id is mandatory
-            label: '<b>Section</b>', // You can use HTML/SVG inside labels
-            attributes: { class: 'gjs-block-section' },
-            content: `<section>
-              <h1>This is a simple title</h1>
-              <div>This is just a Lorem text: Lorem ipsum dolor sit amet</div>
-            </section>`,
-          },
-          {
-            category: { id: 'header' },
-            id: 'text',
-            label: 'Text',
-            content: '<div data-gjs-type="text">Insert your text here</div>',
-          },
-          {
-            category: { id: 'hero', label: 'Hero', open: true, order: 1 },
-            id: 'image',
-            label: 'Image',
-            // Select the component once it's dropped
-            select: true,
-            // You can pass components as a JSON instead of a simple HTML string,
-            // in this case we also use a defined component type `image`
-            content: { type: 'image' },
-            // This triggers `active` event on dropped components and the `image`
-            // reacts by opening the AssetManager
-            activate: true,
-          },
-        ],
+        // blocks: [
+        //   {
+        //     category: { id: 'header', label: 'Header', open: true, order: 1 },
+        //     id: 'section', // id is mandatory
+        //     label: '<b>Section</b>', // You can use HTML/SVG inside labels
+        //     attributes: { class: 'gjs-block-section' },
+        //     content: `<section>
+        //       <h1>This is a simple title</h1>
+        //       <div>This is just a Lorem text: Lorem ipsum dolor sit amet</div>
+        //     </section>`,
+        //   },
+        //   {
+        //     category: { id: 'header' },
+        //     id: 'text',
+        //     label: 'Text',
+        //     content: '<div data-gjs-type="text">Insert your text here</div>',
+        //   },
+        //   {
+        //     category: { id: 'hero', label: 'Hero', open: true, order: 1 },
+        //     id: 'image',
+        //     label: 'Image',
+        //     // Select the component once it's dropped
+        //     select: true,
+        //     // You can pass components as a JSON instead of a simple HTML string,
+        //     // in this case we also use a defined component type `image`
+        //     content: { type: 'image' },
+        //     // This triggers `active` event on dropped components and the `image`
+        //     // reacts by opening the AssetManager
+        //     activate: true,
+        //   },
+        // ],
       },
       deviceManager: {
         default: this.devices[0].id,
@@ -140,7 +118,11 @@ export class AppComponent {
       styleManager: {
         appendTo: '#styles',
       },
-      plugins: ['grapesjs-plugin-forms', 'grapesjs-tailwind'],
+      plugins: [GjsTailwind, GjsPluginForms],
+      pluginsOpts: {
+        GjsTailwind: {},
+        GjsPluginForms: {},
+      },
     });
   }
 
