@@ -13,12 +13,27 @@ import {
   Undo,
   Redo,
 } from 'lucide-angular';
+import {
+  MailOutline,
+  UserOutline,
+  TeamOutline,
+  LockOutline,
+} from '@ant-design/icons-angular/icons';
+import { provideHttpClient } from '@angular/common/http';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimations(),
+    provideHttpClient(),
     importProvidersFrom(
+      NzIconModule.forRoot([
+        MailOutline,
+        UserOutline,
+        TeamOutline,
+        LockOutline,
+      ]),
       LucideAngularModule.pick({
         File,
         Home,

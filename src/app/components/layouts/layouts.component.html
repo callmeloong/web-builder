@@ -1,0 +1,11 @@
+<nz-layout>
+  <nz-header class="bg-white border-b"></nz-header>
+  <nz-layout>
+    <nz-sider [(nzCollapsed)]="collapsed" nzTheme="light" nzWidth="260px">
+      <bs-navigation (collapsedChange)="collapsed = $event" />
+    </nz-sider>
+    <nz-content class="px-6 py-4">
+      <router-outlet />
+    </nz-content>
+  </nz-layout>
+</nz-layout>
