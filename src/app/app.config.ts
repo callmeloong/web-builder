@@ -18,6 +18,10 @@ import {
   UserOutline,
   TeamOutline,
   LockOutline,
+  BuildOutline,
+  AuditOutline,
+  BarcodeOutline,
+  DatabaseOutline
 } from '@ant-design/icons-angular/icons';
 import { provideHttpClient } from '@angular/common/http';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -33,6 +37,10 @@ export const appConfig: ApplicationConfig = {
         UserOutline,
         TeamOutline,
         LockOutline,
+        BuildOutline,
+        AuditOutline,
+        BarcodeOutline,
+        DatabaseOutline
       ]),
       LucideAngularModule.pick({
         File,
