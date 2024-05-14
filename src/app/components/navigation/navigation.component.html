@@ -14,6 +14,7 @@
         [nzPaddingLeft]="menu.level * 24"
         [nzDisabled]="menu.disabled"
         [nzSelected]="menu.selected"
+        [routerLink]="menu.url"
       >
         @if (menu.icon) {
         <span nz-icon [nzType]="menu.icon"></span>

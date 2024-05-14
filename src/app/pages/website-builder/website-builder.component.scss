@@ -16,7 +16,11 @@
 }
 
 .gjs-block {
-  @apply border border-dashed mx-3 rounded-[var(--border-radius-base)] w-full;
+  @apply border border-dashed rounded-[var(--border-radius-base)];
+}
+
+.block-full-width.gjs-block {
+  @apply w-full mx-3;
 }
 
 .gjs-block-category .gjs-title,

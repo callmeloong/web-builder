@@ -1,1 +1,107 @@
-<p>products works!</p>
+<div class="flex flex-col gap-6">
+  <bs-page-header title="Products" subTitle="Add/edit/delete products">
+    <div extra class="flex gap-2">
+      @if(setOfCheckedId.size) {
+      <button nz-button>Draft/Active ({{ setOfCheckedId.size }})</button>
+      } @if(setOfCheckedId.size) {
+      <button nz-button nzDanger>Delete ({{ setOfCheckedId.size }})</button>
+      }
+      <button nz-button nzType="primary" routerLink="/products/create">
+        Create product
+      </button>
+    </div>
+    <nz-descriptions content nzSize="small" [nzColumn]="3">
+      <nz-descriptions-item nzTitle="Created" [nzSpan]="1"
+        >Lili Qu</nz-descriptions-item
+      >
+      <nz-descriptions-item nzTitle="Association" [nzSpan]="1"
+        ><a>421421</a></nz-descriptions-item
+      >
+      <nz-descriptions-item nzTitle="Creation Time" [nzSpan]="1"
+        >2017-01-10</nz-descriptions-item
+      >
+      <nz-descriptions-item nzTitle="Effective Time" [nzSpan]="1"
+        >2017-10-10</nz-descriptions-item
+      >
+      <nz-descriptions-item nzTitle="Remarks" [nzSpan]="2">
+        Gonghu Road, Xihu District, Hangzhou, Zhejiang, China
+      </nz-descriptions-item>
+    </nz-descriptions>
+  </bs-page-header>
+
+  <div class="border rounded-md p-6 bg-white flex flex-col gap-4">
+    <div class="flex items-end">
+      <form [formGroup]="filter" class="max-w-[500px] flex gap-6">
+        <nz-form-item class="flex-1 mb-0">
+          <nz-form-label nzFor="user" nzSpan="24">
+            Product name:
+          </nz-form-label>
+          <nz-form-control nzSpan="24" class="h-[30px]">
+            <input
+              formControlName="name"
+              nz-input
+              placeholder="What are you looking for?"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="flex-1 mb-0">
+          <nz-form-label nzFor="user" nzSpan="24"> Price: </nz-form-label>
+          <nz-form-control nzSpan="24" nz-row class="h-[30px]">
+            <nz-form-label nzFor="user" nz-col nzSpan="4"> Min </nz-form-label>
+            <input formControlName="minPrice" nz-input nz-col nzSpan="7" />
+            ~
+            <nz-form-label nzFor="user" nz-col nzSpan="4"> Max </nz-form-label>
+            <input formControlName="maxPrice" nz-input nz-col nzSpan="7" />
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+      <button nz-button nzType="primary">
+        <i nz-icon nzType="search"></i>Search
+      </button>
+    </div>
+
+    <nz-table #basicTable [nzData]="listProduct" nzSize="small">
+      <thead>
+        <tr>
+          <th
+            [nzChecked]="checked"
+            [nzIndeterminate]="indeterminate"
+            nzLabel="Select all"
+            (nzCheckedChange)="onAllChecked($event)"
+          ></th>
+          <th class="whitespace-nowrap"></th>
+          <th class="whitespace-nowrap">Name</th>
+          <th class="whitespace-nowrap">Description</th>
+          <th class="whitespace-nowrap">Price</th>
+          <th class="whitespace-nowrap">Modified at</th>
+          <th class="whitespace-nowrap">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td
+            [nzChecked]="setOfCheckedId.has(data.id)"
+            [nzDisabled]="data.disabled"
+            [nzLabel]="data.name"
+            (nzCheckedChange)="onItemChecked(data.id, $event)"
+          ></td>
+          <td class="w-32">
+            <img class="aspect-square" [src]="data.images[0]" alt="" />
+          </td>
+          <td class="whitespace-nowrap">{{ data.title }}</td>
+          <td>
+            {{ data.description }}
+            <!-- <p nz-typography nzEllipsis>{{ data.description }}</p> -->
+          </td>
+          <td class="text-right">{{ data.price | currency }}</td>
+          <td class="text-right">{{ data.updatedAt | date : "dd/MM/yyyy" }}</td>
+          <td class="whitespace-nowrap">
+            <a class="text-blue-400">Action</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a class="text-blue-400">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>

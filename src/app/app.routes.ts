@@ -28,6 +28,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'products/create',
+        loadComponent: () =>
+          import('./pages/product-details/product-details.component').then(
+            (m) => m.ProductDetailsComponent
+          ),
+      },
+      {
         path: 'categories',
         loadComponent: () =>
           import('./pages/categories/categories.component').then(

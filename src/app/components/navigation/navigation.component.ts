@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { NzSiderComponent } from 'ng-zorro-antd/layout';
 import {
@@ -12,6 +13,7 @@ import {
   standalone: true,
   imports: [
     CommonModule,
+    RouterLink,
     NzMenuDirective,
     NzMenuItemComponent,
     NzSubMenuComponent,
@@ -28,16 +30,19 @@ export class NavigationComponent {
       level: 1,
       title: 'Orders',
       icon: 'audit',
+      url: 'orders',
     },
     {
       level: 1,
       title: 'Categories',
       icon: 'database',
+      url: 'categories',
     },
     {
       level: 1,
       title: 'Products',
       icon: 'barcode',
+      url: 'products',
     },
     {
       level: 1,
@@ -53,6 +58,7 @@ export class NavigationComponent {
           icon: 'build',
           selected: false,
           disabled: false,
+          url: 'website/builder',
         },
         // {
         //   level: 2,

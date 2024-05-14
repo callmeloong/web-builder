@@ -1,0 +1,17 @@
+<nz-page-header
+  nzBackIcon
+  [nzGhost]="ghost"
+  [ngClass]="{ 'border rounded-md': !ghost }"
+>
+  <nz-page-header-title>{{ title }}</nz-page-header-title>
+  @if (!!subTitle) {
+  <nz-page-header-subtitle>{{ subTitle }}</nz-page-header-subtitle>
+  }
+  <nz-page-header-extra>
+    <ng-content select="[extra]"></ng-content>
+  </nz-page-header-extra>
+
+  <nz-page-header-content>
+    <ng-content select="[content]"></ng-content>
+  </nz-page-header-content>
+</nz-page-header>
